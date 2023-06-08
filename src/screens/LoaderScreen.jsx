@@ -8,7 +8,7 @@ export default function LoaderScreen({ navigation }) {
   useEffect(() => {
     if (load) return;
 
-    if (userData && userData.token && userData.user) {
+    if (userData?.token && userData.user) {
       navigation.reset({ index: 0, routes: [{ name: "App" }] });
     } else {
       navigation.reset({ index: 0, routes: [{ name: "Login" }] });

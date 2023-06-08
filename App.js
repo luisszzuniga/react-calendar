@@ -3,18 +3,18 @@ import React from 'react';
 import Router from './src/components/Router';
 import Alerts from './src/components/Alerts';
 
-import UserContextProdiver from './src/contexts/UserContexts';
+import UserContextProvider from './src/contexts/UserContexts';
 
 export default function App() {
 
   return (
     <>
-      <UserContextProdiver>
+      <UserContextProvider>
 
         <Router />
         <Alerts />
 
-      </UserContextProdiver>
+      </UserContextProvider>
     </>
   );
 }

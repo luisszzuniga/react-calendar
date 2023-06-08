@@ -18,16 +18,16 @@ export default function LoginScreen({ navigation }) {
     };
 
     APIService.post("/api/auth/login", body)
-      .then(async (response) => {
+      .then((response) => {
         setUserData({
           token: response.data.token,
           user: response.data.user,
         });
 
-        navigation.reset({ index: 0, routes: [{ name: "App" }] });
+        navigation.reset({ index: 0, routes: [{ name: "Loader" }] });
       })
       .catch((error) => {
-        setErrorMessage(error.response.data.error);
+        setErrorMessage(error.message);
       });
   };
 

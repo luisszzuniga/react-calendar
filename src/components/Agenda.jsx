@@ -16,7 +16,7 @@ const AgendaScreen = ({ teamId }) => {
     );
   }
 
-  const [items, setItems] = useState(undefined);
+  const [items, setItems] = useState([]);
 
   useEffect(() => {
     loadItems({ dateString: todayDateString() });
@@ -46,9 +46,9 @@ const AgendaScreen = ({ teamId }) => {
     setItems(newItems);
   }
 
-  const renderItem = (reservation, isFirst) => {
-    const fontSize = isFirst ? 16 : 14;
-    const color = isFirst ? 'black' : '#43515c';
+  const renderCalendarDay = (reservation, isFirstItemOfDay) => {
+    const fontSize = isFirstItemOfDay ? 16 : 14;
+    const color = isFirstItemOfDay ? 'black' : '#43515c';
 
     return (
       <TouchableOpacity
@@ -89,7 +89,7 @@ const AgendaScreen = ({ teamId }) => {
       items={items}
       loadItemsForMonth={loadItems}
       selected={todayDateString()}
-      renderItem={renderItem}
+      renderItem={renderCalendarDay}
       renderEmptyDate={renderEmptyDate}
       rowHasChanged={rowHasChanged}
       showClosingKnob={true}

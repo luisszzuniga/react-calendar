@@ -9,6 +9,7 @@ export default function RegisterScreen({ navigation }) {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   const { userData, setUserData } = useContext(UserContext);
@@ -18,24 +19,21 @@ export default function RegisterScreen({ navigation }) {
       username,
       email,
       password,
+      confirm_password: passwordConfirm
     };
-
-    console.log(body)
 
     APIService
       .post("/api/auth/register", body)
-      .then(async (response) => {
-        console.log(response)
+      .then((response) => {
         setUserData({
           token: response.data.token,
           user: response.data.user
         });
 
-        navigation.reset({ index: 0, routes: [{ name: "Login" }] });
+        navigation.reset({ index: 0, routes: [{ name: "Loader" }] });
       })
       .catch((error) => {
-        console.log(error)
-        // setErrorMessage(error.response.data);
+        setErrorMessage(error.message);
       });
   };
 
@@ -67,6 +65,13 @@ export default function RegisterScreen({ navigation }) {
         style={styles.input}
         value={password}
         onChangeText={(e) => setPassword(e)}
+      ></TextInput>
+      <TextInput
+        secureTextEntry
+        placeholder="Password confirm"
+        style={styles.input}
+        value={passwordConfirm}
+        onChangeText={(e) => setPasswordConfirm(e)}
       ></TextInput>
 
       {errorMessage && <Text style={styles.errorMessage}>{errorMessage}</Text>}

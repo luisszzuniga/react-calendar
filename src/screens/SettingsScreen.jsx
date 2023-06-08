@@ -102,13 +102,13 @@ export default function SettingsScreen({ navigation }) {
           value={confirmNewPassword}
           onChangeText={(e) => setConfirmNewPassword(e)}
         ></TextInput>
-        <Button title="Changer le mot de passe" onPress={savePassword} color={"green"} textColor={"white"} />
+        <Button title="Changer le mot de passe" onPress={savePassword} color="green" textColor="white" />
 
         <Text style={[styles.title]}>Au revoir</Text>
-        <Button title="Déconnexion" onPress={logOut} color={"red"} textColor={"white"} />
+        <Button title="Déconnexion" onPress={logOut} color="red" textColor="white" />
 
         <Text style={[styles.title]}>Danger !</Text>
-        <Button title="Supprimer mon compte" onPress={logOut} color={"red"} textColor={"white"} />
+        <Button title="Supprimer mon compte" onPress={logOut} color="red" textColor="white" />
       </ScrollView>
     </>
   );

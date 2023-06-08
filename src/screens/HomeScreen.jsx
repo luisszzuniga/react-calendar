@@ -8,7 +8,7 @@ export default function HomeScreen({ navigation }) {
 
     return (
         <>
-            <Text>Bonjour { userData.user.username }!</Text>
+            <Text>Bonjour { userData?.user?.username }!</Text>
 
             <Agenda teamId="1"/>
         </>

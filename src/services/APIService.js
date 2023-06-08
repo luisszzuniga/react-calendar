@@ -1,7 +1,7 @@
 import axios from "axios";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const baseURL = 'https://6f52-79-174-199-126.ngrok-free.app';
+const baseURL = 'https://54ea-2a04-cec0-11f7-2fa0-55fd-92a7-60f6-c436.ngrok-free.app';
 
 const APIService = axios.create({
     baseURL: baseURL
@@ -35,7 +35,7 @@ APIService.interceptors.response.use(
 
         // Erreurs de validation
         if (error.response.data.details) {
-            message = error.response.data.details[0].message;
+            message = error.response.data.details[0]?.message
         }
 
         throw {

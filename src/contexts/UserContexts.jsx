@@ -3,7 +3,7 @@ import { createContext, useEffect, useState } from "react";
 
 export const UserContext = createContext();
 
-const UserContextProdiver = ({ children }) => {
+const UserContextProvider = ({ children }) => {
   const [userData, setUserData] = useState(undefined);
   const [load, setLoad] = useState(true);
   const [successMessage, setSuccessMessage] = useState("");
@@ -14,13 +14,9 @@ const UserContextProdiver = ({ children }) => {
   }, []);
 
   const getUserData = async () => {
-    try {
-      let data = await AsyncStorage.getItem("userData");
-      setUserData(JSON.parse(data));
-      setLoad(false);
-    } catch (error) {
-      // Handle error if AsyncStorage operation fails
-    }
+    let data = await AsyncStorage.getItem("userData");
+    setUserData(JSON.parse(data));
+    setLoad(false);
   };
 
   useEffect(() => {
@@ -46,4 +42,4 @@ const UserContextProdiver = ({ children }) => {
   );
 };
 
-export default UserContextProdiver;
+export default UserContextProvider;
